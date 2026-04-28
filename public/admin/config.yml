@@ -42,7 +42,7 @@
 backend:
   name: git-gateway
   repo: MarkoMalec/red-resonance
-  branch: main
+  branch: master
   auth_type: pkce
   base_url: https://auth.decapbridge.com
   auth_endpoint: /sites/8dc0c02d-df17-48df-8882-fa2160ddd783/pkce
