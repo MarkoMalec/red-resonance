@@ -230,6 +230,35 @@ collections:
               - { label: "Image One Alt Text", name: "imageOneAlt", widget: "string" }
               - { label: "Image Two", name: "imageTwo", widget: "image" }
               - { label: "Image Two Alt Text", name: "imageTwoAlt", widget: "string" }
+          - label: "Feature Section 2"
+            name: "featureTwo"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - { label: "Image One", name: "imageOne", widget: "image" }
+              - { label: "Image One Alt Text", name: "imageOneAlt", widget: "string" }
+              - { label: "Image Two", name: "imageTwo", widget: "image" }
+              - { label: "Image Two Alt Text", name: "imageTwoAlt", widget: "string" }
+          - label: "About Section 2"
+            name: "aboutTwo"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Quote Author", name: "quoteAuthor", widget: "string" }
+              - { label: "Quote Role", name: "quoteRole", widget: "string" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button URL", name: "buttonHref", widget: "string" }
+              - { label: "Image One", name: "imageOne", widget: "image" }
+              - { label: "Image One Alt Text", name: "imageOneAlt", widget: "string" }
+              - { label: "Image Two", name: "imageTwo", widget: "image" }
+              - { label: "Image Two Alt Text", name: "imageTwoAlt", widget: "string" }
           - label: "Gallery"
             name: "gallery"
             widget: "object"

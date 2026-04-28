@@ -66,6 +66,47 @@ feature:
   imageOneAlt: house
   imageTwo: "@assets/images/services/cabinets2.jpg"
   imageTwoAlt: cabinets
+featureTwo:
+  eyebrow: SEO Ranking
+  title: Talk about a main service keyword
+  paragraphs:
+    - In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan
+      nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri
+      consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei
+      aptent taciti sociosqu ad litora torquent per.
+    - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non tenetur,
+      iure nihil ipsam qui atque commodi id voluptatem nesciunt, quis animi fuga
+      cum doloribus! Eaque laboriosam, unde consectetur iure asperiores ullam.
+      Consequuntur debitis a voluptatibus vitae optio autem explicabo quia neque
+      est quas, in placeat. Lorem ipsum dolor sit amet consectetur adipisicing
+      elit. Doloribus modi laudantium voluptatibus rem libero error minus quia
+      eligendi sapiente eos.
+  imageOne: "@assets/images/services/construction.jpg"
+  imageOneAlt: house
+  imageTwo: "@assets/images/services/cabinets2.jpg"
+  imageTwoAlt: cabinets
+aboutTwo:
+  paragraphs:
+    - In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan
+      nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri
+      consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei
+      aptent taciti sociosqu ad litora torquent per.
+    - In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan
+      nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri
+      consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei
+      aptent taciti sociosqu ad litora torquent per.
+  quoteAuthor: Justin Time
+  eyebrow: About Us
+  quoteRole: CEO-Founder
+  imageTwoAlt: house
+  title: About Company Title
+  quote: In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
+    consequat tincidunt turpis sit amet imperdiet for mind.
+  buttonHref: /about/
+  imageOne: "@assets/images/services/cabinets2.jpg"
+  imageOneAlt: cabinets
+  imageTwo: "@assets/images/services/construction.jpg"
+  buttonText: More About Us
 gallery:
   eyebrow: Our Portfolio
   title: Et orci volutpat, back up generator installations
