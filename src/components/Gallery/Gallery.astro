@@ -15,27 +15,32 @@ import port7 from "@assets/images/projects/port7.jpg";
 import port8 from "@assets/images/projects/port8.jpg";
 import port9 from "@assets/images/projects/port9.jpg";
 
+interface GalleryImage {
+  image: ImageMetadata;
+  alt: string;
+}
+
 interface Props {
   content?: {
     eyebrow?: string;
     title?: string;
     buttonText?: string;
     buttonHref?: string;
-    imageAlts?: string[];
+    images?: GalleryImage[];
   };
 }
 
 const { content = {} } = Astro.props as Props;
-const imageAlts = content.imageAlts ?? [
-  "new hallway",
-  "new home construction",
-  "building a new wall",
-  "new kitchen",
-  "apartment addition",
-  "new kitchen cabinets",
-  "new kitchen",
-  "apartment addition",
-  "new kitchen cabinets",
+const galleryImages = content.images ?? [
+  { image: port1, alt: "new hallway" },
+  { image: port4, alt: "new home construction" },
+  { image: port7, alt: "building a new wall" },
+  { image: port2, alt: "new kitchen" },
+  { image: port5, alt: "apartment addition" },
+  { image: port8, alt: "new kitchen cabinets" },
+  { image: port3, alt: "new kitchen" },
+  { image: port6, alt: "apartment addition" },
+  { image: port9, alt: "new kitchen cabinets" },
 ];
 ---
 
@@ -50,24 +55,24 @@ const imageAlts = content.imageAlts ?? [
       <div class="cs-row cs-row-1">
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
         <Picture
-          src={port1}
-          alt={imageAlts[0] ?? "new hallway"}
+          src={galleryImages[0]?.image ?? port1}
+          alt={galleryImages[0]?.alt ?? "new hallway"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
           pictureAttributes={{ class: "cs-picture cs-picture1" }}
         />
         <Picture
-          src={port4}
-          alt={imageAlts[1] ?? "new home construction"}
+          src={galleryImages[1]?.image ?? port4}
+          alt={galleryImages[1]?.alt ?? "new home construction"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
           pictureAttributes={{ class: "cs-picture cs-picture2" }}
         />
         <Picture
-          src={port7}
-          alt={imageAlts[2] ?? "building a new wall"}
+          src={galleryImages[2]?.image ?? port7}
+          alt={galleryImages[2]?.alt ?? "building a new wall"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -78,24 +83,24 @@ const imageAlts = content.imageAlts ?? [
       <div class="cs-row cs-row-2">
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
         <Picture
-          src={port2}
-          alt={imageAlts[3] ?? "new kitchen"}
+          src={galleryImages[3]?.image ?? port2}
+          alt={galleryImages[3]?.alt ?? "new kitchen"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
           pictureAttributes={{ class: "cs-picture cs-picture1" }}
         />
         <Picture
-          src={port5}
-          alt={imageAlts[4] ?? "apartment addition"}
+          src={galleryImages[4]?.image ?? port5}
+          alt={galleryImages[4]?.alt ?? "apartment addition"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
           pictureAttributes={{ class: "cs-picture cs-picture2" }}
         />
         <Picture
-          src={port8}
-          alt={imageAlts[5] ?? "new kitchen cabinets"}
+          src={galleryImages[5]?.image ?? port8}
+          alt={galleryImages[5]?.alt ?? "new kitchen cabinets"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -106,24 +111,24 @@ const imageAlts = content.imageAlts ?? [
       <div class="cs-row cs-row-3">
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
         <Picture
-          src={port3}
-          alt={imageAlts[6] ?? "new kitchen"}
+          src={galleryImages[6]?.image ?? port3}
+          alt={galleryImages[6]?.alt ?? "new kitchen"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
           pictureAttributes={{ class: "cs-picture cs-picture1" }}
         />
         <Picture
-          src={port6}
-          alt={imageAlts[7] ?? "apartment addition"}
+          src={galleryImages[7]?.image ?? port6}
+          alt={galleryImages[7]?.alt ?? "apartment addition"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
           pictureAttributes={{ class: "cs-picture cs-picture2" }}
         />
         <Picture
-          src={port9}
-          alt={imageAlts[8] ?? "new kitchen cabinets"}
+          src={galleryImages[8]?.image ?? port9}
+          alt={galleryImages[8]?.alt ?? "new kitchen cabinets"}
           width={400}
           height={560}
           formats={['avif', 'webp']}

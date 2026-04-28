@@ -86,7 +86,7 @@ const globalCollection = defineCollection({
 
 const pagesCollection = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/pages" }),
-	schema: z.object({
+	schema: ({ image }) => z.object({
 		title: z.string(),
 		description: z.string(),
 		hero: z.object({
@@ -97,6 +97,7 @@ const pagesCollection = defineCollection({
 			primaryButtonHref: z.string(),
 			secondaryButtonText: z.string(),
 			secondaryButtonHref: z.string(),
+			image: image(),
 			imageAlt: z.string(),
 		}),
 		services: z.array(
@@ -114,14 +115,18 @@ const pagesCollection = defineCollection({
 			quoteRole: z.string(),
 			buttonText: z.string(),
 			buttonHref: z.string(),
+			imageOne: image(),
 			imageOneAlt: z.string(),
+			imageTwo: image(),
 			imageTwoAlt: z.string(),
 		}),
 		feature: z.object({
 			eyebrow: z.string(),
 			title: z.string(),
 			paragraphs: z.array(z.string()),
+			imageOne: image(),
 			imageOneAlt: z.string(),
+			imageTwo: image(),
 			imageTwoAlt: z.string(),
 		}),
 		gallery: z.object({
@@ -129,7 +134,12 @@ const pagesCollection = defineCollection({
 			title: z.string(),
 			buttonText: z.string(),
 			buttonHref: z.string(),
-			imageAlts: z.array(z.string()),
+			images: z.array(
+				z.object({
+					image: image(),
+					alt: z.string(),
+				}),
+			),
 		}),
 		testimonials: z.object({
 			eyebrow: z.string(),
@@ -143,6 +153,7 @@ const pagesCollection = defineCollection({
 					name: z.string(),
 					role: z.string(),
 					quote: z.string(),
+					image: image(),
 					imageAlt: z.string(),
 				}),
 			),
@@ -162,6 +173,7 @@ const pagesCollection = defineCollection({
 			text: z.string(),
 			buttonText: z.string(),
 			buttonHref: z.string(),
+			image: image(),
 			imageAlt: z.string().optional().default(""),
 		}),
 	}),

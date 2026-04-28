@@ -16,9 +16,9 @@ import CTASimple from "@components/CTA/CTASimple.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Banner (for rendering)
 import heroImage from "@assets/images/hero/hero.jpg";
-const optimizedHeroImage = await getImage({ src: heroImage, format: "webp" });
 const homepage = await getEntry("pages", "homepage");
 const content = homepage?.data;
+const optimizedHeroImage = await getImage({ src: content?.hero.image ?? heroImage, format: "webp" });
 ---
 
 <BaseLayout

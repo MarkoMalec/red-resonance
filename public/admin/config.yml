@@ -71,8 +71,8 @@ logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 # Add site links in Decap CMS (optional)
 site_url: https://slavski.netlify.app
 
-media_folder: src/assets/images/blog # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
-public_folder: "@assets/images/blog" # Same folder as above, but using a path alias for easier referencing in the markdown files.
+media_folder: src/assets/images/uploads # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
+public_folder: "@assets/images/uploads" # Same folder as above, but using a path alias for easier referencing in the markdown files.
 
 collections:
   - name: "blog"
@@ -191,6 +191,7 @@ collections:
               - { label: "Primary Button URL", name: "primaryButtonHref", widget: "string" }
               - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string" }
               - { label: "Secondary Button URL", name: "secondaryButtonHref", widget: "string" }
+              - { label: "Background Image", name: "image", widget: "image" }
               - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
           - label: "Services"
             name: "services"
@@ -213,7 +214,9 @@ collections:
               - { label: "Quote Role", name: "quoteRole", widget: "string" }
               - { label: "Button Text", name: "buttonText", widget: "string" }
               - { label: "Button URL", name: "buttonHref", widget: "string" }
+              - { label: "Image One", name: "imageOne", widget: "image" }
               - { label: "Image One Alt Text", name: "imageOneAlt", widget: "string" }
+              - { label: "Image Two", name: "imageTwo", widget: "image" }
               - { label: "Image Two Alt Text", name: "imageTwoAlt", widget: "string" }
           - label: "Feature Section"
             name: "feature"
@@ -223,7 +226,9 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - { label: "Image One", name: "imageOne", widget: "image" }
               - { label: "Image One Alt Text", name: "imageOneAlt", widget: "string" }
+              - { label: "Image Two", name: "imageTwo", widget: "image" }
               - { label: "Image Two Alt Text", name: "imageTwoAlt", widget: "string" }
           - label: "Gallery"
             name: "gallery"
@@ -234,7 +239,14 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Button Text", name: "buttonText", widget: "string" }
               - { label: "Button URL", name: "buttonHref", widget: "string" }
-              - { label: "Image Alt Texts", name: "imageAlts", widget: "list", field: { label: "Alt Text", name: "alt", widget: "string" } }
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                collapsed: false
+                summary: "{{fields.alt}}"
+                fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
           - label: "Testimonials"
             name: "testimonials"
             widget: "object"
@@ -255,6 +267,7 @@ collections:
                   - { label: "Name", name: "name", widget: "string" }
                   - { label: "Role", name: "role", widget: "string" }
                   - { label: "Quote", name: "quote", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
                   - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
           - label: "FAQ"
             name: "faq"
@@ -280,5 +293,6 @@ collections:
               - { label: "Text", name: "text", widget: "text" }
               - { label: "Button Text", name: "buttonText", widget: "string" }
               - { label: "Button URL", name: "buttonHref", widget: "string" }
+              - { label: "Background Image", name: "image", widget: "image" }
               - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
 # Use DecapBridge PKCE auth (required)

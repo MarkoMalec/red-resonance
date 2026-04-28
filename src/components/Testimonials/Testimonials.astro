@@ -11,6 +11,7 @@ interface Review {
 	name: string;
 	role: string;
 	quote: string;
+	image?: ImageMetadata;
 	imageAlt: string;
 }
 
@@ -33,12 +34,14 @@ const reviews = content.reviews ?? [
 		name: "Jon Doe",
 		role: "Homeowner",
 		quote: "Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci imperdiet eget eget.",
+		image: profile5,
 		imageAlt: "Jon Doe",
 	},
 	{
 		name: "Jane Doe",
 		role: "Homeowner",
 		quote: "Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci imperdiet eget eget.",
+		image: profile4,
 		imageAlt: "Jane Doe",
 	},
 ];
@@ -52,7 +55,7 @@ const reviews = content.reviews ?? [
 		<ul class="cs-card-group">
 			{reviews.map((review, index) => (
 				<li class="cs-item">
-					<Image src={reviewImages[index] ?? profile4} class="cs-item-img" alt={review.imageAlt} width="80" height="80" />
+					<Image src={review.image ?? reviewImages[index] ?? profile4} class="cs-item-img" alt={review.imageAlt} width="80" height="80" />
 					<p class="cs-item-p">{review.quote}</p>
 					<span class="cs-reviewer">
 						{review.name}

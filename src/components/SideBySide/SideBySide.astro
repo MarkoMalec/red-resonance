@@ -19,7 +19,9 @@ interface Props {
 		quoteRole?: string;
 		buttonText?: string;
 		buttonHref?: string;
+		imageOne?: ImageMetadata;
 		imageOneAlt?: string;
+		imageTwo?: ImageMetadata;
 		imageTwoAlt?: string;
 	};
 }
@@ -35,8 +37,8 @@ const paragraphs = content.paragraphs ?? [
 	<div class="cs-container">
 		<!-- Left Image Section -->
 		<div class="cs-left">
-			<Picture src={cabinets2} alt={content.imageOneAlt ?? "cabinets"} width={522} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} priority />
-			<Picture src={construction} alt={content.imageTwoAlt ?? "house"} width={390} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} priority />
+			<Picture src={content.imageOne ?? cabinets2} alt={content.imageOneAlt ?? "cabinets"} width={522} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} priority />
+			<Picture src={content.imageTwo ?? construction} alt={content.imageTwoAlt ?? "house"} width={390} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} priority />
 		</div>
 		<!-- Right Content Section-->
 		<div class="cs-right">

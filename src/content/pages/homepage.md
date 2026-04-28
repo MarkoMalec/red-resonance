@@ -13,6 +13,7 @@ hero:
   primaryButtonHref: /about/
   secondaryButtonText: Get in Touch
   secondaryButtonHref: /contact/
+  image: "@assets/images/hero/hero.jpg"
   imageAlt: new home
 services:
   - title: Service 1
@@ -42,7 +43,9 @@ about:
   quote: In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
     consequat tincidunt turpis sit amet imperdiet for mind.
   buttonHref: /about/
+  imageOne: "@assets/images/services/cabinets2.jpg"
   imageOneAlt: cabinets
+  imageTwo: "@assets/images/services/construction.jpg"
   buttonText: More About Us
 feature:
   eyebrow: SEO Ranking
@@ -59,23 +62,34 @@ feature:
       est quas, in placeat. Lorem ipsum dolor sit amet consectetur adipisicing
       elit. Doloribus modi laudantium voluptatibus rem libero error minus quia
       eligendi sapiente eos.
+  imageOne: "@assets/images/services/construction.jpg"
   imageOneAlt: house
+  imageTwo: "@assets/images/services/cabinets2.jpg"
   imageTwoAlt: cabinets
 gallery:
   eyebrow: Our Portfolio
   title: Et orci volutpat, back up generator installations
   buttonText: View all projects
   buttonHref: /projects/
-  imageAlts:
-    - new hallway
-    - new home construction
-    - building a new wall
-    - new kitchen
-    - apartment addition
-    - new kitchen cabinets
-    - new kitchen
-    - apartment addition
-    - new kitchen cabinets
+  images:
+    - image: "@assets/images/projects/port1.jpg"
+      alt: new hallway
+    - image: "@assets/images/projects/port4.jpg"
+      alt: new home construction
+    - image: "@assets/images/projects/port7.jpg"
+      alt: building a new wall
+    - image: "@assets/images/projects/port2.jpg"
+      alt: new kitchen
+    - image: "@assets/images/projects/port5.jpg"
+      alt: apartment addition
+    - image: "@assets/images/projects/port8.jpg"
+      alt: new kitchen cabinets
+    - image: "@assets/images/projects/port3.jpg"
+      alt: new kitchen
+    - image: "@assets/images/projects/port6.jpg"
+      alt: apartment addition
+    - image: "@assets/images/projects/port9.jpg"
+      alt: new kitchen cabinets
 testimonials:
   eyebrow: Our Reviews
   title: Words From Our Customers
@@ -93,6 +107,7 @@ testimonials:
         nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper
         lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa
         urna, volutpat orci imperdiet eget eget.
+      image: "@assets/images/testimonials/profile5.png"
       imageAlt: Jon Doe
     - name: Jane Doe
       role: Homeowner
@@ -100,6 +115,7 @@ testimonials:
         nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper
         lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa
         urna, volutpat orci imperdiet eget eget.
+      image: "@assets/images/testimonials/profile-4.png"
       imageAlt: Jane Doe
 faq:
   eyebrow: Frequently Asked Questions
@@ -132,5 +148,6 @@ cta:
     go to the contact page. I like to add these to the bottom of all pages.
   buttonText: Get an Estimate Now
   buttonHref: /contact/
+  image: "@assets/images/CTA/cabinets2.jpg"
   imageAlt: ""
 ---

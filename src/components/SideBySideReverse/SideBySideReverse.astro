@@ -13,7 +13,9 @@ interface Props {
     eyebrow?: string;
     title?: string;
     paragraphs?: string[];
+    imageOne?: ImageMetadata;
     imageOneAlt?: string;
+    imageTwo?: ImageMetadata;
     imageTwoAlt?: string;
   };
 }
@@ -30,7 +32,7 @@ const paragraphs = content.paragraphs ?? [
     <!-- Left Image Section -->
     <div class="cs-left">
       <Picture
-        src={construction}
+        src={content.imageOne ?? construction}
         alt={content.imageOneAlt ?? "house"}
         width={400}
         height={560}
@@ -38,7 +40,7 @@ const paragraphs = content.paragraphs ?? [
         pictureAttributes={{ class: "cs-picture cs-picture1" }}
       />
       <Picture
-        src={cabinets2}
+        src={content.imageTwo ?? cabinets2}
         alt={content.imageTwoAlt ?? "cabinets"}
         width={400}
         height={560}

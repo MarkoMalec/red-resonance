@@ -15,6 +15,7 @@ interface Props {
 		text?: string;
 		buttonText?: string;
 		buttonHref?: string;
+		image?: ImageMetadata;
 		imageAlt?: string;
 	};
 }
@@ -31,7 +32,7 @@ const titleLines = content.titleLines ?? ["Get It Done", "With Us Today"];
 		<p>{content.text ?? "Say something catchy, informative, and encouraging to click the button to go to the contact page. I like to add these to the bottom of all pages."}</p>
 		<a href={content.buttonHref ?? "/contact/"} class="cs-button-solid">{content.buttonText ?? "Get an Estimate Now"}</a>
 	</div>
-	<Picture src={ctaImage} alt={content.imageAlt ?? ""} layout="full-width" formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture" }} />
+	<Picture src={content.image ?? ctaImage} alt={content.imageAlt ?? ""} layout="full-width" formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture" }} />
 </section>
 
 <style lang="less">
