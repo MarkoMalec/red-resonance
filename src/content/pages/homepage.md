@@ -2,19 +2,19 @@
 title: Slavski
 description: Meta description for the page
 hero:
-  eyebrow: Test
+  primaryButtonText: Explore More
   titleLines:
     - Slavski
     - Pavel
+  eyebrow: Test
   text: This intermediate kit includes a pre-configured Astro environment, which
     allows for repeated components, centralized data and greater room to scale
     as your clients grow. Decap CMS has been integrated to run a blog.
-  primaryButtonText: Explore More
-  primaryButtonHref: /about/
-  secondaryButtonText: Get in Touch
-  secondaryButtonHref: /contact/
-  image: "@assets/images/hero/hero.jpg"
   imageAlt: new home
+  secondaryButtonHref: /contact/
+  secondaryButtonText: Get in Touch
+  image: "@assets/images/hero/hero.jpg"
+  primaryButtonHref: /about/
 services:
   - title: Service 1
     text: Talk about the service with keywords people will be searching for it by.
@@ -37,15 +37,15 @@ about:
       aptent taciti sociosqu ad litora torquent per.
   quoteAuthor: Justin Time
   eyebrow: About Us
+  imageOne: "@assets/images/uploads/whatsapp-image-2026-04-12-at-14.34.55.jpeg"
+  imageTwo: "@assets/images/services/construction.jpg"
   quoteRole: CEO-Founder
   imageTwoAlt: house
   title: About Company Title
   quote: In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
     consequat tincidunt turpis sit amet imperdiet for mind.
   buttonHref: /about/
-  imageOne: "@assets/images/services/cabinets2.jpg"
   imageOneAlt: cabinets
-  imageTwo: "@assets/images/services/construction.jpg"
   buttonText: More About Us
 feature:
   eyebrow: SEO Ranking
