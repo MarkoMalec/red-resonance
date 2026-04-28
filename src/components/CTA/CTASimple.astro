@@ -8,19 +8,30 @@ import { Picture } from "astro:assets";
 
 // Images
 import ctaImage from "@assets/images/CTA/cabinets2.jpg";
+
+interface Props {
+	content?: {
+		titleLines?: string[];
+		text?: string;
+		buttonText?: string;
+		buttonHref?: string;
+		imageAlt?: string;
+	};
+}
+
+const { content = {} } = Astro.props as Props;
+const titleLines = content.titleLines ?? ["Get It Done", "With Us Today"];
 ---
 
 <section id="cta">
 	<div class="container">
 		<h2 class="title">
-			Get It Done
-			<br />
-			With Us Today
+			{titleLines.map((line, index) => <>{line}{index < titleLines.length - 1 && <br />}</>)}
 		</h2>
-		<p>Say something catchy, informative, and encouraging to click the button to go to the contact page. I like to add these to the bottom of all pages.</p>
-		<a href="/contact/" class="cs-button-solid">Get an Estimate Now</a>
+		<p>{content.text ?? "Say something catchy, informative, and encouraging to click the button to go to the contact page. I like to add these to the bottom of all pages."}</p>
+		<a href={content.buttonHref ?? "/contact/"} class="cs-button-solid">{content.buttonText ?? "Get an Estimate Now"}</a>
 	</div>
-	<Picture src={ctaImage} alt="" layout="full-width" formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture" }} />
+	<Picture src={ctaImage} alt={content.imageAlt ?? ""} layout="full-width" formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture" }} />
 </section>
 
 <style lang="less">

@@ -20,6 +20,18 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 
 // Data
 import navData from "@data/navData.json";
+
+interface Props {
+	content?: {
+		logoAriaLabel?: string;
+		navAriaLabel?: string;
+		menuToggleAriaLabel?: string;
+		mobileContactText?: string;
+		contactButtonText?: string;
+	};
+}
+
+const { content = {} } = Astro.props as Props;
 ---
 
 <header id="cs-navigation">
@@ -28,12 +40,12 @@ import navData from "@data/navData.json";
 		<a
 			href="/"
 			class="cs-logo"
-			aria-label="Return to [Company Name] Home page"
+			aria-label={content.logoAriaLabel ?? "Return to home page"}
 		>
 			<Icon name="logo-black" />
 		</a>
 		<!--Navigation List-->
-		<nav class="cs-nav" aria-label="main navigation">
+		<nav class="cs-nav" aria-label={content.navAriaLabel ?? "main navigation"}>
 			<!--Mobile Nav Toggle-->
 			<button
 				class="cs-toggle"
@@ -41,7 +53,7 @@ import navData from "@data/navData.json";
 				aria-expanded="false"
 				aria-controls="cs-ul-wrapper"
 				aria-haspopup="menu"
-				aria-label="mobile menu toggle"
+				aria-label={content.menuToggleAriaLabel ?? "mobile menu toggle"}
 			>
 				<span class="cs-box" aria-hidden="true">
 					<span class="cs-line cs-line1" aria-hidden="true"></span>
@@ -148,13 +160,13 @@ import navData from "@data/navData.json";
 								"/contact/",
 							)}
 						>
-							Contact
+							{content.mobileContactText ?? "Contact"}
 						</a>
 					</li>
 				</ul>
 			</div>
 		</nav>
-		<a href="/contact/" class="cs-button-solid cs-nav-button">Contact Us</a>
+		<a href="/contact/" class="cs-button-solid cs-nav-button">{content.contactButtonText ?? "Contact Us"}</a>
 		<!--Dark Mode toggle: remove component if you don't want to enable a dark mode toggle-->
 		<DarkModeToggle />
 	</div>

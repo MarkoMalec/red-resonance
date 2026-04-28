@@ -1,39 +1,42 @@
 ---
 // Utils
 import { Icon } from 'astro-icon/components';
+
+interface Service {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  services?: Service[];
+}
+
+const { services = [
+  {
+    title: "Service 1",
+    text: "Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.",
+  },
+  {
+    title: "Service 2",
+    text: "Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.",
+  },
+  {
+    title: "Service 3",
+    text: "Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.",
+  },
+] } = Astro.props as Props;
 ---
 
 <section id="services" class="services">
-  <div class="card">
-    <picture>
-      <Icon name="service1" width="48" height="48" aria-hidden="true" />
-    </picture>
-    <h2>Service 1</h2>
-    <p>
-      Talk about the service with keywords people will be searching for it by.
-      Keep it 1-2 sentences.
-    </p>
-  </div>
-  <div class="card">
-    <picture>
-      <Icon name="service2" width="48" height="48" aria-hidden="true" />
-    </picture>
-    <h2>Service 2</h2>
-    <p>
-      Talk about the service with keywords people will be searching for it by.
-      Keep it 1-2 sentences.
-    </p>
-  </div>
-  <div class="card">
-    <picture>
-      <Icon name="service3" width="48" height="48" aria-hidden="true" />
-    </picture>
-    <h2>Service 3</h2>
-    <p>
-      Talk about the service with keywords people will be searching for it by.
-      Keep it 1-2 sentences.
-    </p>
-  </div>
+  {services.map((service, index) => (
+    <div class="card">
+      <picture>
+        <Icon name={`service${index + 1}`} width="48" height="48" aria-hidden="true" />
+      </picture>
+      <h2>{service.title}</h2>
+      <p>{service.text}</p>
+    </div>
+  ))}
 </section>
 
 <style lang="less">

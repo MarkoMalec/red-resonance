@@ -88,4 +88,128 @@ collections:
       - { label: "Image Caption", name: "imageAlt", widget: "string" }
       - { label: "Is it a featured post?", name: "isFeatured", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "src/content/pages/homepage.md"
+        fields:
+          - { label: "SEO Title", name: "title", widget: "string" }
+          - { label: "SEO Description", name: "description", widget: "text" }
+          - { label: "Skip Link Text", name: "skipLinkText", widget: "string" }
+          - label: "Header"
+            name: "header"
+            widget: "object"
+            fields:
+              - { label: "Logo Aria Label", name: "logoAriaLabel", widget: "string" }
+              - { label: "Navigation Aria Label", name: "navAriaLabel", widget: "string" }
+              - { label: "Menu Toggle Aria Label", name: "menuToggleAriaLabel", widget: "string" }
+              - { label: "Mobile Contact Text", name: "mobileContactText", widget: "string" }
+              - { label: "Contact Button Text", name: "contactButtonText", widget: "string" }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Logo Aria Label", name: "logoAriaLabel", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Information Heading", name: "informationHeading", widget: "string" }
+              - { label: "Services Heading", name: "servicesHeading", widget: "string" }
+              - { label: "Services", name: "services", widget: "list", field: { label: "Service", name: "service", widget: "string" } }
+              - { label: "Contact Heading", name: "contactHeading", widget: "string" }
+              - { label: "Phone Prefix", name: "phonePrefix", widget: "string" }
+              - { label: "Email Label", name: "emailLabel", widget: "string" }
+              - { label: "Credit Prefix", name: "creditPrefix", widget: "string" }
+              - { label: "Credit Company", name: "creditCompany", widget: "string" }
+              - { label: "Credit Company URL", name: "creditCompanyUrl", widget: "string" }
+              - { label: "Copyright Text", name: "copyrightText", widget: "string" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title Lines", name: "titleLines", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Primary Button Text", name: "primaryButtonText", widget: "string" }
+              - { label: "Primary Button URL", name: "primaryButtonHref", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string" }
+              - { label: "Secondary Button URL", name: "secondaryButtonHref", widget: "string" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Quote Author", name: "quoteAuthor", widget: "string" }
+              - { label: "Quote Role", name: "quoteRole", widget: "string" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button URL", name: "buttonHref", widget: "string" }
+              - { label: "Image One Alt Text", name: "imageOneAlt", widget: "string" }
+              - { label: "Image Two Alt Text", name: "imageTwoAlt", widget: "string" }
+          - label: "Feature Section"
+            name: "feature"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - { label: "Image One Alt Text", name: "imageOneAlt", widget: "string" }
+              - { label: "Image Two Alt Text", name: "imageTwoAlt", widget: "string" }
+          - label: "Gallery"
+            name: "gallery"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button URL", name: "buttonHref", widget: "string" }
+              - { label: "Image Alt Texts", name: "imageAlts", widget: "list", field: { label: "Alt Text", name: "alt", widget: "string" } }
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button URL", name: "buttonHref", widget: "string" }
+              - { label: "Button Aria Label", name: "buttonAriaLabel", widget: "string" }
+              - label: "Reviews"
+                name: "reviews"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Role", name: "role", widget: "string" }
+                  - { label: "Quote", name: "quote", widget: "text" }
+                  - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+          - label: "FAQ"
+            name: "faq"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Question", name: "question", widget: "string" }
+                  - { label: "Answer", name: "answer", widget: "text" }
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Title Lines", name: "titleLines", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button URL", name: "buttonHref", widget: "string" }
+              - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
 # Use DecapBridge PKCE auth (required)

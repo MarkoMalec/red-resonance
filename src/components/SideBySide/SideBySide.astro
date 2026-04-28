@@ -8,34 +8,48 @@ import { Picture } from "astro:assets";
 // Images
 import cabinets2 from "@assets/images/services/cabinets2.jpg";
 import construction from "@assets/images/services/construction.jpg";
+
+interface Props {
+	content?: {
+		eyebrow?: string;
+		title?: string;
+		paragraphs?: string[];
+		quote?: string;
+		quoteAuthor?: string;
+		quoteRole?: string;
+		buttonText?: string;
+		buttonHref?: string;
+		imageOneAlt?: string;
+		imageTwoAlt?: string;
+	};
+}
+
+const { content = {} } = Astro.props as Props;
+const paragraphs = content.paragraphs ?? [
+	"In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.",
+	"In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.",
+];
 ---
 
 <section id="sbs">
 	<div class="cs-container">
 		<!-- Left Image Section -->
 		<div class="cs-left">
-			<Picture src={cabinets2} alt="cabinets" width={522} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} priority />
-			<Picture src={construction} alt="house" width={390} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} priority />
+			<Picture src={cabinets2} alt={content.imageOneAlt ?? "cabinets"} width={522} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture1" }} priority />
+			<Picture src={construction} alt={content.imageTwoAlt ?? "house"} width={390} formats={["avif", "webp"]} pictureAttributes={{ class: "cs-picture cs-picture2" }} priority />
 		</div>
 		<!-- Right Content Section-->
 		<div class="cs-right">
-			<span class="cs-topper">About Us</span>
-			<h2 class="cs-title">About Company Title</h2>
-			<p class="cs-text">
-				In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti
-				sociosqu ad litora torquent per.
-			</p>
-			<p class="cs-text">
-				In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti
-				sociosqu ad litora torquent per.
-			</p>
+			<span class="cs-topper">{content.eyebrow ?? "About Us"}</span>
+			<h2 class="cs-title">{content.title ?? "About Company Title"}</h2>
+			{paragraphs.map((paragraph) => <p class="cs-text">{paragraph}</p>)}
 			<div class="cs-flex-group">
-				<p class="cs-flex-p">In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.</p>
-				<span class="cs-name">Justin Time</span>
-				<span class="cs-job">CEO-Founder</span>
+				<p class="cs-flex-p">{content.quote ?? "In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind."}</p>
+				<span class="cs-name">{content.quoteAuthor ?? "Justin Time"}</span>
+				<span class="cs-job">{content.quoteRole ?? "CEO-Founder"}</span>
 				<Icon name="quote-white" class="cs-quote-icon" />
 			</div>
-			<a href="/about/" class="cs-button-solid">More About Us</a>
+			<a href={content.buttonHref ?? "/about/"} class="cs-button-solid">{content.buttonText ?? "More About Us"}</a>
 		</div>
 	</div>
 </section>

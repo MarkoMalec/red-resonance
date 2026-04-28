@@ -6,45 +6,63 @@ import { Icon } from "astro-icon/components";
 // Data
 import profile5 from "@assets/images/testimonials/profile5.png";
 import profile4 from "@assets/images/testimonials/profile-4.png";
+
+interface Review {
+	name: string;
+	role: string;
+	quote: string;
+	imageAlt: string;
+}
+
+interface Props {
+	content?: {
+		eyebrow?: string;
+		title?: string;
+		text?: string;
+		buttonText?: string;
+		buttonHref?: string;
+		buttonAriaLabel?: string;
+		reviews?: Review[];
+	};
+}
+
+const { content = {} } = Astro.props as Props;
+const reviewImages = [profile5, profile4];
+const reviews = content.reviews ?? [
+	{
+		name: "Jon Doe",
+		role: "Homeowner",
+		quote: "Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci imperdiet eget eget.",
+		imageAlt: "Jon Doe",
+	},
+	{
+		name: "Jane Doe",
+		role: "Homeowner",
+		quote: "Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci imperdiet eget eget.",
+		imageAlt: "Jane Doe",
+	},
+];
 ---
 
 <section id="reviews">
 	<div class="cs-container">
-		<span class="cs-topper">Our Reviews</span>
-		<h2 class="cs-title">Words From Our Customers</h2>
-		<p class="cs-text">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare. Lorem ipsum dolor sit amet.
-		</p>
+		<span class="cs-topper">{content.eyebrow ?? "Our Reviews"}</span>
+		<h2 class="cs-title">{content.title ?? "Words From Our Customers"}</h2>
+		<p class="cs-text">{content.text ?? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare. Lorem ipsum dolor sit amet."}</p>
 		<ul class="cs-card-group">
-			<!-- Review 1 -->
-			<li class="cs-item">
-				<Image src={profile5} class="cs-item-img" alt="Jon Doe" width="80" height="80" />
-				<p class="cs-item-p">
-					Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci
-					imperdiet eget eget.
-				</p>
-				<span class="cs-reviewer">
-					Jon Doe
-					<span class="cs-desc">Homeowner</span>
-				</span>
-				<Icon name="stars-yellow" class="cs-item-stars" />
-			</li>
-			<!-- Review 2 -->
-			<li class="cs-item">
-				<Image src={profile4} class="cs-item-img" alt="Jon Doe" width="80" height="80" />
-
-				<p class="cs-item-p">
-					Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci
-					imperdiet eget eget.
-				</p>
-				<span class="cs-reviewer">
-					Jane Doe
-					<span class="cs-desc">Homeowner</span>
-				</span>
-				<Icon name="stars-yellow" class="cs-item-stars" />
-			</li>
+			{reviews.map((review, index) => (
+				<li class="cs-item">
+					<Image src={reviewImages[index] ?? profile4} class="cs-item-img" alt={review.imageAlt} width="80" height="80" />
+					<p class="cs-item-p">{review.quote}</p>
+					<span class="cs-reviewer">
+						{review.name}
+						<span class="cs-desc">{review.role}</span>
+					</span>
+					<Icon name="stars-yellow" class="cs-item-stars" />
+				</li>
+			))}
 		</ul>
-		<a aria-label="read more reviews" href="/reviews/" class="cs-button-solid">Our Reviews</a>
+		<a aria-label={content.buttonAriaLabel ?? "read more reviews"} href={content.buttonHref ?? "/reviews/"} class="cs-button-solid">{content.buttonText ?? "Our Reviews"}</a>
 	</div>
 </section>
 

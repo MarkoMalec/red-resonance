@@ -8,21 +8,41 @@ import { BUSINESS } from "@data/client";
 import navData from "@data/navData.json";
 
 const currentYear = getCurrentYear();
+
+interface Props {
+	content?: {
+		logoAriaLabel?: string;
+		description?: string;
+		informationHeading?: string;
+		servicesHeading?: string;
+		services?: string[];
+		contactHeading?: string;
+		phonePrefix?: string;
+		emailLabel?: string;
+		creditPrefix?: string;
+		creditCompany?: string;
+		creditCompanyUrl?: string;
+		copyrightText?: string;
+	};
+}
+
+const { content = {} } = Astro.props as Props;
+const services = content.services ?? ["Service1", "Service2", "Service4", "Service5"];
 ---
 
 <footer id="footer">
 	<div class="container">
 		<div class="left-section">
-			<a class="logo" href="/" aria-label="Return to [Company Name] Home page">
+			<a class="logo" href="/" aria-label={content.logoAriaLabel ?? "Return to home page"}>
 				<Icon name="logo-white" width="264" height="78" />
 			</a>
-			<p>Extra content if you need it, if not you can delete this whole p tag. I usually do.</p>
+			<p>{content.description ?? "Extra content if you need it, if not you can delete this whole p tag. I usually do."}</p>
 		</div>
 		<div class="right-section">
 			<div class="lists">
 				<ul>
 					<li>
-						<h2>Information</h2>
+						<h2>{content.informationHeading ?? "Information"}</h2>
 					</li>
 					{
 						navData.map((entry) => (
@@ -34,16 +54,13 @@ const currentYear = getCurrentYear();
 				</ul>
 				<ul>
 					<li>
-						<h2>Services</h2>
+						<h2>{content.servicesHeading ?? "Services"}</h2>
 					</li>
-					<li>Service1</li>
-					<li>Service2</li>
-					<li>Service4</li>
-					<li>Service5</li>
+					{services.map((service) => <li>{service}</li>)}
 				</ul>
 				<ul>
 					<li>
-						<h2>Contact</h2>
+						<h2>{content.contactHeading ?? "Contact"}</h2>
 					</li>
 					<li>
 						<a href="/contact/">
@@ -56,12 +73,12 @@ const currentYear = getCurrentYear();
 					</li>
 					<li>
 						<a href={`tel:${BUSINESS.phoneForTel}`}>
-							T:
+							{content.phonePrefix ?? "T:"}
 							{BUSINESS.phoneFormatted}
 						</a>
 					</li>
 					<li>
-						<a href={`mailto:${BUSINESS.email}`}>Click to Email</a>
+						<a href={`mailto:${BUSINESS.email}`}>{content.emailLabel ?? "Click to Email"}</a>
 					</li>
 				</ul>
 			</div>
@@ -69,9 +86,9 @@ const currentYear = getCurrentYear();
 	</div>
 
 	<div class="credit">
-		<span>Designed and Hand Coded by</span>
-		<a href="/" target="_blank" rel="noopener">Your Company Name</a>
-		<span class="copyright"> Copyright {currentYear} - Present</span>
+		<span>{content.creditPrefix ?? "Designed and Hand Coded by"}</span>
+		<a href={content.creditCompanyUrl ?? "/"} target="_blank" rel="noopener">{content.creditCompany ?? "Your Company Name"}</a>
+		<span class="copyright"> {content.copyrightText ?? "Copyright"} {currentYear} - Present</span>
 	</div>
 </footer>
 

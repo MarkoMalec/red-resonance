@@ -14,13 +14,36 @@ import port6 from "@assets/images/projects/port6.jpg";
 import port7 from "@assets/images/projects/port7.jpg";
 import port8 from "@assets/images/projects/port8.jpg";
 import port9 from "@assets/images/projects/port9.jpg";
+
+interface Props {
+  content?: {
+    eyebrow?: string;
+    title?: string;
+    buttonText?: string;
+    buttonHref?: string;
+    imageAlts?: string[];
+  };
+}
+
+const { content = {} } = Astro.props as Props;
+const imageAlts = content.imageAlts ?? [
+  "new hallway",
+  "new home construction",
+  "building a new wall",
+  "new kitchen",
+  "apartment addition",
+  "new kitchen cabinets",
+  "new kitchen",
+  "apartment addition",
+  "new kitchen cabinets",
+];
 ---
 
 <section id="gallery">
   <div class="cs-container">
-    <span class="cs-topper">Our Portfolio</span>
+    <span class="cs-topper">{content.eyebrow ?? "Our Portfolio"}</span>
     <h2 class="cs-title">
-      Et orci volutpat, back up generator installations
+      {content.title ?? "Et orci volutpat, back up generator installations"}
     </h2>
     <div class="cs-image-group">
       <!-- Row 1-->
@@ -28,7 +51,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
         <Picture
           src={port1}
-          alt="new hallway"
+          alt={imageAlts[0] ?? "new hallway"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -36,7 +59,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         />
         <Picture
           src={port4}
-          alt="new home construction"
+          alt={imageAlts[1] ?? "new home construction"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -44,7 +67,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         />
         <Picture
           src={port7}
-          alt="building a new wall"
+          alt={imageAlts[2] ?? "building a new wall"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -56,7 +79,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
         <Picture
           src={port2}
-          alt="new kitchen"
+          alt={imageAlts[3] ?? "new kitchen"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -64,7 +87,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         />
         <Picture
           src={port5}
-          alt="apartment addition"
+          alt={imageAlts[4] ?? "apartment addition"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -72,7 +95,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         />
         <Picture
           src={port8}
-          alt="new kitchen cabinets"
+          alt={imageAlts[5] ?? "new kitchen cabinets"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -84,7 +107,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
         <Picture
           src={port3}
-          alt="new kitchen"
+          alt={imageAlts[6] ?? "new kitchen"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -92,7 +115,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         />
         <Picture
           src={port6}
-          alt="apartment addition"
+          alt={imageAlts[7] ?? "apartment addition"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -100,7 +123,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         />
         <Picture
           src={port9}
-          alt="new kitchen cabinets"
+          alt={imageAlts[8] ?? "new kitchen cabinets"}
           width={400}
           height={560}
           formats={['avif', 'webp']}
@@ -108,7 +131,7 @@ import port9 from "@assets/images/projects/port9.jpg";
         />
       </div>
     </div>
-    <a href="/projects/" class="cs-button-solid">View all projects</a>
+    <a href={content.buttonHref ?? "/projects/"} class="cs-button-solid">{content.buttonText ?? "View all projects"}</a>
   </div>
 </section>
 

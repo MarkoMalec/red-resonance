@@ -11,26 +11,34 @@ import type { GetImageResult } from "astro";
 
 interface Props {
 	image: GetImageResult; // pre-optimized image from getImage()
+	content?: {
+		eyebrow?: string;
+		titleLines?: string[];
+		text?: string;
+		primaryButtonText?: string;
+		primaryButtonHref?: string;
+		secondaryButtonText?: string;
+		secondaryButtonHref?: string;
+		imageAlt?: string;
+	};
 }
 
-const { image } = Astro.props as Props;
+const { image, content = {} } = Astro.props as Props;
+const titleLines = content.titleLines ?? ["Intermediate Astro v6", "Decap CMS"];
 ---
 
 <section id="hero">
 	<div class="cs-container">
 		<div class="cs-flex-group">
-			<span class="cs-topper">Intermediate Kit</span>
-			<h1 class="cs-title">Intermediate Astro v6 <br /> Decap CMS</h1>
-			<p class="cs-text">
-				This intermediate kit includes a pre-configured Astro
-				environment, which allows for repeated components, centralized
-				data and greater room to scale as your clients grow. Decap CMS
-				has been integrated to run a blog.
-			</p>
-			<a href="/about/" class="cs-button-solid">Explore More</a>
-			<a href="/contact/" class="cs-button-transparent">
+			<span class="cs-topper">{content.eyebrow ?? "Intermediate Kit"}</span>
+			<h1 class="cs-title">
+				{titleLines.map((line, index) => <>{line}{index < titleLines.length - 1 && <br />}</>)}
+			</h1>
+			<p class="cs-text">{content.text ?? "This intermediate kit includes a pre-configured Astro environment, which allows for repeated components, centralized data and greater room to scale as your clients grow. Decap CMS has been integrated to run a blog."}</p>
+			<a href={content.primaryButtonHref ?? "/about/"} class="cs-button-solid">{content.primaryButtonText ?? "Explore More"}</a>
+			<a href={content.secondaryButtonHref ?? "/contact/"} class="cs-button-transparent">
 				<Icon name="play" class="cs-img" />
-				Get in Touch
+				{content.secondaryButtonText ?? "Get in Touch"}
 			</a>
 		</div>
 	</div>
@@ -38,7 +46,7 @@ const { image } = Astro.props as Props;
 	<!-- Using the preloaded image from the props -->
 	<Picture
 		src={image.src}
-		alt="new home"
+		alt={content.imageAlt ?? "new home"}
 		width={image.attributes.width}
 		height={image.attributes.height}
 		formats={["avif", "webp"]}

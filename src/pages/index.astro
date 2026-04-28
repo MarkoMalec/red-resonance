@@ -1,6 +1,7 @@
 ---
 // Utils
 import { getImage } from "astro:assets";
+import { getEntry } from "astro:content";
 
 // Components
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -16,15 +17,24 @@ import CTASimple from "@components/CTA/CTASimple.astro";
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Banner (for rendering)
 import heroImage from "@assets/images/hero/hero.jpg";
 const optimizedHeroImage = await getImage({ src: heroImage, format: "webp" });
+const homepage = await getEntry("pages", "homepage");
+const content = homepage?.data;
 ---
 
-<BaseLayout title="Pixel Perfect Websites" description="Meta description for the page" heroImage={optimizedHeroImage}>
-	<Hero image={optimizedHeroImage} />
-	<Services />
-	<SideBySide />
-	<SideBySideReverse />
-	<Gallery />
-	<Testimonials />
-	<FAQ />
-	<CTASimple />
+<BaseLayout
+	title={content?.title ?? "Pixel Perfect Websites"}
+	description={content?.description ?? "Meta description for the page"}
+	heroImage={optimizedHeroImage}
+	skipLinkText={content?.skipLinkText}
+	header={content?.header}
+	footer={content?.footer}
+>
+	<Hero image={optimizedHeroImage} content={content?.hero} />
+	<Services services={content?.services} />
+	<SideBySide content={content?.about} />
+	<SideBySideReverse content={content?.feature} />
+	<Gallery content={content?.gallery} />
+	<Testimonials content={content?.testimonials} />
+	<FAQ content={content?.faq} />
+	<CTASimple content={content?.cta} />
 </BaseLayout>
