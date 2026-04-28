@@ -1,5 +1,5 @@
 ---
-title: Pixel Perfect Websites
+title: Slavski
 description: Meta description for the page
 skipLinkText: Click To Skip To Main Content
 header:
