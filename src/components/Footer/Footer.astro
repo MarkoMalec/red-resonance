@@ -3,10 +3,6 @@
 import { Icon } from "astro-icon/components";
 import { getCurrentYear } from "@js/utils";
 
-// Data
-import { BUSINESS } from "@data/client";
-import navData from "@data/navData.json";
-
 const currentYear = getCurrentYear();
 
 interface Props {
@@ -14,10 +10,20 @@ interface Props {
 		logoAriaLabel?: string;
 		description?: string;
 		informationHeading?: string;
+		informationLinks?: { label: string; url: string }[];
 		servicesHeading?: string;
 		services?: string[];
 		contactHeading?: string;
+		addressLineOne?: string;
+		addressLineTwo?: string;
+		addressCity?: string;
+		addressState?: string;
+		addressZip?: string;
+		addressUrl?: string;
 		phonePrefix?: string;
+		phoneForTel?: string;
+		phoneFormatted?: string;
+		email?: string;
 		emailLabel?: string;
 		creditPrefix?: string;
 		creditCompany?: string;
@@ -27,7 +33,17 @@ interface Props {
 }
 
 const { content = {} } = Astro.props as Props;
+const informationLinks = content.informationLinks ?? [
+	{ label: "Home", url: "/" },
+	{ label: "About Us", url: "/about/" },
+	{ label: "Projects", url: "/projects/" },
+	{ label: "Reviews", url: "/reviews/" },
+	{ label: "Blog", url: "/blog/" },
+];
 const services = content.services ?? ["Service1", "Service2", "Service4", "Service5"];
+const phoneForTel = content.phoneForTel ?? "555-779-4407";
+const phoneFormatted = content.phoneFormatted ?? "(555) 779-4407";
+const email = content.email ?? "help@codestitch.app";
 ---
 
 <footer id="footer">
@@ -45,9 +61,9 @@ const services = content.services ?? ["Service1", "Service2", "Service4", "Servi
 						<h2>{content.informationHeading ?? "Information"}</h2>
 					</li>
 					{
-						navData.map((entry) => (
+						informationLinks.map((entry) => (
 							<li class="cs-li">
-								<a href={entry.url}>{entry.key}</a>
+								<a href={entry.url}>{entry.label}</a>
 							</li>
 						))
 					}
@@ -63,22 +79,22 @@ const services = content.services ?? ["Service1", "Service2", "Service4", "Servi
 						<h2>{content.contactHeading ?? "Contact"}</h2>
 					</li>
 					<li>
-						<a href="/contact/">
-							{BUSINESS.address.lineOne}<br />
-							{BUSINESS.address.lineTwo}<br />
-							{BUSINESS.address.city}
-							{BUSINESS.address.state}
-							{BUSINESS.address.zip}
+						<a href={content.addressUrl ?? "/contact/"}>
+							{content.addressLineOne ?? "First Address Line"}<br />
+							{content.addressLineTwo ?? "Second Address Line"}<br />
+							{content.addressCity ?? "Denver"}
+							{content.addressState ?? "CO"}
+							{content.addressZip ?? "80206"}
 						</a>
 					</li>
 					<li>
-						<a href={`tel:${BUSINESS.phoneForTel}`}>
+						<a href={`tel:${phoneForTel}`}>
 							{content.phonePrefix ?? "T:"}
-							{BUSINESS.phoneFormatted}
+							{phoneFormatted}
 						</a>
 					</li>
 					<li>
-						<a href={`mailto:${BUSINESS.email}`}>{content.emailLabel ?? "Click to Email"}</a>
+						<a href={`mailto:${email}`}>{content.emailLabel ?? "Click to Email"}</a>
 					</li>
 				</ul>
 			</div>

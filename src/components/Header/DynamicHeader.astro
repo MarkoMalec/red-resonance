@@ -21,17 +21,37 @@ import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle.astro";
 // Data
 import navData from "@data/navData.json";
 
+interface NavItem {
+	label: string;
+	url: string;
+	children?: NavItem[];
+}
+
 interface Props {
 	content?: {
 		logoAriaLabel?: string;
+		skipLinkText?: string;
 		navAriaLabel?: string;
 		menuToggleAriaLabel?: string;
+		darkModeToggleAriaLabel?: string;
 		mobileContactText?: string;
 		contactButtonText?: string;
+		contactButtonHref?: string;
+		navItems?: NavItem[];
 	};
 }
 
 const { content = {} } = Astro.props as Props;
+const fallbackNavItems = navData.map((entry) => ({
+	label: entry.key,
+	url: entry.url,
+	children: entry.children?.map((child) => ({ label: child.key, url: child.url })) ?? [],
+}));
+const navItems = (content.navItems ?? fallbackNavItems).map((entry) => ({
+	...entry,
+	children: entry.children ?? [],
+}));
+const contactButtonHref = content.contactButtonHref ?? "/contact/";
 ---
 
 <header id="cs-navigation">
@@ -65,7 +85,7 @@ const { content = {} } = Astro.props as Props;
 			<div class="cs-ul-wrapper" id="cs-ul-wrapper">
 				<ul id="cs-expanded" class="cs-ul">
 					{
-						navData.map((entry) => (
+						navItems.map((entry) => (
 							<li
 								class:list={[
 									"cs-li",
@@ -78,7 +98,7 @@ const { content = {} } = Astro.props as Props;
 								{entry.children?.length > 0 ? (
 									// If entry has children in navData.json, create a button and a dropdown icon
 									<button
-										id={getDropdownId(entry.key)}
+										id={getDropdownId(entry.label)}
 										aria-expanded="false"
 										aria-haspopup="menu"
 										class:list={[
@@ -91,7 +111,7 @@ const { content = {} } = Astro.props as Props;
 											},
 										]}
 									>
-										{entry.key}
+										{entry.label}
 										<Icon
 											name="mdi--caret"
 											class="cs-drop-icon"
@@ -114,7 +134,7 @@ const { content = {} } = Astro.props as Props;
 											entry.url,
 										)}
 									>
-										{entry.key}
+										{entry.label}
 									</a>
 								)}
 
@@ -123,7 +143,7 @@ const { content = {} } = Astro.props as Props;
 									<ul
 										class="cs-drop-ul"
 										aria-labelledby={getDropdownId(
-											entry.key,
+											entry.label,
 										)}
 									>
 										{entry.children.map((child) => (
@@ -136,7 +156,7 @@ const { content = {} } = Astro.props as Props;
 														child.url,
 													)}
 												>
-													{child.key}
+													{child.label}
 												</a>
 											</li>
 										))}
@@ -147,17 +167,17 @@ const { content = {} } = Astro.props as Props;
 					}
 					<li class="cs-li cs-hide-on-desktop">
 						<a
-							href="/contact/"
+							href={contactButtonHref}
 							class:list={[
 								"cs-li-link",
 								{
 									"cs-active":
-										Astro.url.pathname === "/contact/",
+										Astro.url.pathname === contactButtonHref,
 								},
 							]}
 							aria-current={isCurrentPage(
 								Astro.url.pathname,
-								"/contact/",
+								contactButtonHref,
 							)}
 						>
 							{content.mobileContactText ?? "Contact"}
@@ -166,9 +186,9 @@ const { content = {} } = Astro.props as Props;
 				</ul>
 			</div>
 		</nav>
-		<a href="/contact/" class="cs-button-solid cs-nav-button">{content.contactButtonText ?? "Contact Us"}</a>
+		<a href={contactButtonHref} class="cs-button-solid cs-nav-button">{content.contactButtonText ?? "Contact Us"}</a>
 		<!--Dark Mode toggle: remove component if you don't want to enable a dark mode toggle-->
-		<DarkModeToggle />
+		<DarkModeToggle ariaLabel={content.darkModeToggleAriaLabel} />
 	</div>
 </header>
 

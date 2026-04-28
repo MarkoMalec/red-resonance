@@ -75,11 +75,11 @@ media_folder: src/assets/images/blog # Location where files will be stored in th
 public_folder: "@assets/images/blog" # Same folder as above, but using a path alias for easier referencing in the markdown files.
 
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
-    label: "Blog" # Used in the admin dashboard UI
-    folder: "src/content/blog" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields for each document
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Author", name: "author", widget: "string" }
@@ -88,6 +88,88 @@ collections:
       - { label: "Image Caption", name: "imageAlt", widget: "string" }
       - { label: "Is it a featured post?", name: "isFeatured", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "global"
+    label: "Global Settings"
+    files:
+      - label: "Site Metadata"
+        name: "site"
+        file: "src/content/global/site.md"
+        fields:
+          - { label: "Site Name", name: "siteName", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Default Description", name: "defaultDescription", widget: "text" }
+          - { label: "Site URL", name: "siteUrl", widget: "string" }
+          - { label: "Author", name: "author", widget: "string" }
+          - { label: "Locale", name: "locale", widget: "string" }
+          - { label: "Open Graph Locale", name: "ogLocale", widget: "string" }
+          - { label: "Open Graph Image", name: "ogImage", widget: "string" }
+          - { label: "Logo Path", name: "logo", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
+          - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+      - label: "Header"
+        name: "header"
+        file: "src/content/global/header.md"
+        fields:
+          - { label: "Skip Link Text", name: "skipLinkText", widget: "string" }
+          - { label: "Skip Link Aria Label", name: "skipLinkAriaLabel", widget: "string" }
+          - { label: "Logo Aria Label", name: "logoAriaLabel", widget: "string" }
+          - { label: "Navigation Aria Label", name: "navAriaLabel", widget: "string" }
+          - { label: "Menu Toggle Aria Label", name: "menuToggleAriaLabel", widget: "string" }
+          - { label: "Dark Mode Toggle Aria Label", name: "darkModeToggleAriaLabel", widget: "string" }
+          - { label: "Mobile Contact Text", name: "mobileContactText", widget: "string" }
+          - { label: "Contact Button Text", name: "contactButtonText", widget: "string" }
+          - { label: "Contact Button URL", name: "contactButtonHref", widget: "string" }
+          - label: "Navigation Items"
+            name: "navItems"
+            widget: "list"
+            collapsed: false
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - label: "Dropdown Items"
+                name: "children"
+                widget: "list"
+                required: false
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+      - label: "Footer"
+        name: "footer"
+        file: "src/content/global/footer.md"
+        fields:
+          - { label: "Logo Aria Label", name: "logoAriaLabel", widget: "string" }
+          - { label: "Footer Description", name: "description", widget: "text" }
+          - { label: "Information Heading", name: "informationHeading", widget: "string" }
+          - label: "Information Links"
+            name: "informationLinks"
+            widget: "list"
+            collapsed: false
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - { label: "Services Heading", name: "servicesHeading", widget: "string" }
+          - { label: "Footer Services", name: "services", widget: "list", collapsed: false, field: { label: "Service Label", name: "service", widget: "string" } }
+          - { label: "Contact Heading", name: "contactHeading", widget: "string" }
+          - { label: "Address Line One", name: "addressLineOne", widget: "string" }
+          - { label: "Address Line Two", name: "addressLineTwo", widget: "string", required: false }
+          - { label: "Address City", name: "addressCity", widget: "string" }
+          - { label: "Address State", name: "addressState", widget: "string" }
+          - { label: "Address Zip", name: "addressZip", widget: "string" }
+          - { label: "Address Link URL", name: "addressUrl", widget: "string" }
+          - { label: "Phone Prefix", name: "phonePrefix", widget: "string" }
+          - { label: "Phone Link Number", name: "phoneForTel", widget: "string" }
+          - { label: "Phone Display Text", name: "phoneFormatted", widget: "string" }
+          - { label: "Email Address", name: "email", widget: "string" }
+          - { label: "Email Link Text", name: "emailLabel", widget: "string" }
+          - { label: "Credit Prefix", name: "creditPrefix", widget: "string" }
+          - { label: "Credit Company", name: "creditCompany", widget: "string" }
+          - { label: "Credit Company URL", name: "creditCompanyUrl", widget: "string" }
+          - { label: "Copyright Text", name: "copyrightText", widget: "string" }
+
   - name: "pages"
     label: "Pages"
     files:
@@ -97,39 +179,14 @@ collections:
         fields:
           - { label: "SEO Title", name: "title", widget: "string" }
           - { label: "SEO Description", name: "description", widget: "text" }
-          - { label: "Skip Link Text", name: "skipLinkText", widget: "string" }
-          - label: "Header"
-            name: "header"
-            widget: "object"
-            fields:
-              - { label: "Logo Aria Label", name: "logoAriaLabel", widget: "string" }
-              - { label: "Navigation Aria Label", name: "navAriaLabel", widget: "string" }
-              - { label: "Menu Toggle Aria Label", name: "menuToggleAriaLabel", widget: "string" }
-              - { label: "Mobile Contact Text", name: "mobileContactText", widget: "string" }
-              - { label: "Contact Button Text", name: "contactButtonText", widget: "string" }
-          - label: "Footer"
-            name: "footer"
-            widget: "object"
-            fields:
-              - { label: "Logo Aria Label", name: "logoAriaLabel", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Information Heading", name: "informationHeading", widget: "string" }
-              - { label: "Services Heading", name: "servicesHeading", widget: "string" }
-              - { label: "Services", name: "services", widget: "list", field: { label: "Service", name: "service", widget: "string" } }
-              - { label: "Contact Heading", name: "contactHeading", widget: "string" }
-              - { label: "Phone Prefix", name: "phonePrefix", widget: "string" }
-              - { label: "Email Label", name: "emailLabel", widget: "string" }
-              - { label: "Credit Prefix", name: "creditPrefix", widget: "string" }
-              - { label: "Credit Company", name: "creditCompany", widget: "string" }
-              - { label: "Credit Company URL", name: "creditCompanyUrl", widget: "string" }
-              - { label: "Copyright Text", name: "copyrightText", widget: "string" }
           - label: "Hero"
             name: "hero"
             widget: "object"
+            collapsed: false
             fields:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title Lines", name: "titleLines", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
-              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Hero Text", name: "text", widget: "text" }
               - { label: "Primary Button Text", name: "primaryButtonText", widget: "string" }
               - { label: "Primary Button URL", name: "primaryButtonHref", widget: "string" }
               - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string" }
@@ -138,12 +195,15 @@ collections:
           - label: "Services"
             name: "services"
             widget: "list"
+            collapsed: false
+            summary: "{{fields.title}}"
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Service Title", name: "title", widget: "string" }
+              - { label: "Service Text", name: "text", widget: "text" }
           - label: "About Section"
             name: "about"
             widget: "object"
+            collapsed: false
             fields:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
@@ -158,6 +218,7 @@ collections:
           - label: "Feature Section"
             name: "feature"
             widget: "object"
+            collapsed: false
             fields:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
@@ -167,6 +228,7 @@ collections:
           - label: "Gallery"
             name: "gallery"
             widget: "object"
+            collapsed: false
             fields:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
@@ -176,6 +238,7 @@ collections:
           - label: "Testimonials"
             name: "testimonials"
             widget: "object"
+            collapsed: false
             fields:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
@@ -186,6 +249,8 @@ collections:
               - label: "Reviews"
                 name: "reviews"
                 widget: "list"
+                collapsed: false
+                summary: "{{fields.name}}"
                 fields:
                   - { label: "Name", name: "name", widget: "string" }
                   - { label: "Role", name: "role", widget: "string" }
@@ -194,18 +259,22 @@ collections:
           - label: "FAQ"
             name: "faq"
             widget: "object"
+            collapsed: false
             fields:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - label: "Items"
                 name: "items"
                 widget: "list"
+                collapsed: false
+                summary: "{{fields.question}}"
                 fields:
                   - { label: "Question", name: "question", widget: "string" }
                   - { label: "Answer", name: "answer", widget: "text" }
           - label: "CTA"
             name: "cta"
             widget: "object"
+            collapsed: false
             fields:
               - { label: "Title Lines", name: "titleLines", widget: "list", field: { label: "Line", name: "line", widget: "string" } }
               - { label: "Text", name: "text", widget: "text" }

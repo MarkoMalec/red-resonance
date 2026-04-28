@@ -25,9 +25,6 @@ const content = homepage?.data;
 	title={content?.title ?? "Pixel Perfect Websites"}
 	description={content?.description ?? "Meta description for the page"}
 	heroImage={optimizedHeroImage}
-	skipLinkText={content?.skipLinkText}
-	header={content?.header}
-	footer={content?.footer}
 >
 	<Hero image={optimizedHeroImage} content={content?.hero} />
 	<Services services={content?.services} />

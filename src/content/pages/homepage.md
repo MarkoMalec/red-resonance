@@ -1,31 +1,6 @@
 ---
 title: Slavski
 description: Meta description for the page
-skipLinkText: Click To Skip To Main Content
-header:
-  logoAriaLabel: Return to home page
-  navAriaLabel: main navigation
-  menuToggleAriaLabel: mobile menu toggle
-  mobileContactText: Contact
-  contactButtonText: Contact Us
-footer:
-  phonePrefix: "T:"
-  logoAriaLabel: Return to home page
-  contactHeading: Contact
-  creditCompany: Your Company Name
-  servicesHeading: Services
-  creditPrefix: Designed and Hand Coded by
-  creditCompanyUrl: /
-  copyrightText: Copyright
-  informationHeading: Information
-  emailLabel: Click to Email
-  description: Extra content if you need it, if not you can delete this whole p
-    tag. I usually do.
-  services:
-    - Service1
-    - Service2
-    - Service4
-    - Service5
 hero:
   eyebrow: Test
   titleLines:

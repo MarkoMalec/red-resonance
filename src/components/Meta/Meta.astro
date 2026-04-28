@@ -11,19 +11,49 @@ interface Props {
 	title?: string; // Override default title
 	description?: string; // Override default description
 	heroImage?: HeroImage | ImageMetadata; // Can be optimized hero OR raw ImageMetadata
+	site?: {
+		siteName?: string;
+		defaultDescription?: string;
+		siteUrl?: string;
+		author?: string;
+		locale?: string;
+		ogLocale?: string;
+		ogImage?: string;
+		logo?: string;
+		facebook?: string;
+		instagram?: string;
+	};
+	footer?: {
+		addressLineOne?: string;
+		addressLineTwo?: string;
+		addressCity?: string;
+		addressState?: string;
+		addressZip?: string;
+		phoneForTel?: string;
+		email?: string;
+	};
 }
 
-const { title = SITE.title, description = SITE.description, heroImage } = Astro.props;
+const { title: propTitle, description: propDescription, heroImage, site = {}, footer = {} } = Astro.props as Props;
+const siteName = site.siteName ?? SITE.title;
+const siteUrl = site.siteUrl ?? SITE.url;
+const siteAuthor = site.author ?? SITE.author;
+const ogLocale = site.ogLocale ?? OG.locale;
+const ogImage = site.ogImage ?? OG.image;
+const businessCity = footer.addressCity ?? BUSINESS.address.city;
+const businessState = footer.addressState ?? BUSINESS.address.state;
+const title = propTitle ?? siteName;
+const description = propDescription ?? site.defaultDescription ?? SITE.description;
 
 // Data
-const localBusinessSchema = getLocalBusinessSchema(Astro.url.origin);
+const localBusinessSchema = getLocalBusinessSchema(Astro.url.origin, site, footer);
 const canonical = Astro.url.href;
 
 // Detect home page for special title formatting
 const isHomePage = Astro.url.pathname === "/";
 
 // Format page title with business name (and location if home page)
-const pageTitle = isHomePage ? `${title} | ${BUSINESS.name} | ${BUSINESS.address.city}, ${BUSINESS.address.state}` : `${title} | ${BUSINESS.name}`;
+const pageTitle = isHomePage ? `${title} | ${siteName} | ${businessCity}, ${businessState}` : `${title} | ${siteName}`;
 
 // OG type is hardcoded since it rarely changes
 const ogType = "website";
@@ -52,7 +82,7 @@ if (heroImage) {
 	}
 } else {
 	// Default social image (static file in public/)
-	socialImage = Astro.url.origin + OG.image;
+	socialImage = Astro.url.origin + ogImage;
 }
 ---
 
@@ -69,17 +99,17 @@ if (heroImage) {
 <!-- Standard Meta Tags -->
 <meta charset="utf-8" />
 <meta name="description" content={description} />
-<meta name="web_author" content={SITE.author} />
+<meta name="web_author" content={siteAuthor} />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 <link rel="canonical" href={canonical} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:locale" content={OG.locale} />
+<meta property="og:locale" content={ogLocale} />
 <meta property="og:url" content={canonical} />
 <meta property="og:type" content={ogType} />
 <meta property="og:title" content={ogTitle} />
-<meta property="og:site_name" content={SITE.title} />
+<meta property="og:site_name" content={siteName} />
 <meta property="og:description" content={ogDescription} />
 <meta property="og:image" content={socialImage} />
 <meta content="1200" property="og:image:width" />
@@ -88,7 +118,7 @@ if (heroImage) {
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:domain" content={SITE.url.replace("https://", "")} />
+<meta property="twitter:domain" content={siteUrl.replace("https://", "").replace("http://", "")} />
 <meta property="twitter:url" content={canonical} />
 <meta name="twitter:title" content={ogTitle} />
 <meta name="twitter:description" content={ogDescription} />

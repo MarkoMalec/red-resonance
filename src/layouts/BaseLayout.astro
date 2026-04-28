@@ -2,6 +2,7 @@
 // Utils
 import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
+import { getEntry } from "astro:content";
 import type { GetImageResult } from "astro";
 import "@styles/root.less";
 import "@styles/dark.less";
@@ -21,21 +22,24 @@ interface Props {
 	title: string;
 	description: string;
 	heroImage?: HeroImage; // optional - passing a heroImage to BaseLayout will 1. preload the image and 2. use the image for og socials tags in the <head>
-	skipLinkText?: string;
-	header?: Record<string, string>;
-	footer?: Record<string, unknown>;
 }
 
-const { description, title, heroImage, skipLinkText = "Click To Skip To Main Content", header, footer } = Astro.props as Props;
+const { description, title, heroImage } = Astro.props as Props;
+const siteEntry = await getEntry("global", "site");
+const headerEntry = await getEntry("global", "header");
+const footerEntry = await getEntry("global", "footer");
+const site = siteEntry?.data && "siteName" in siteEntry.data ? siteEntry.data : undefined;
+const header = headerEntry?.data && "navItems" in headerEntry.data ? headerEntry.data : undefined;
+const footer = footerEntry?.data && "informationLinks" in footerEntry.data ? footerEntry.data : undefined;
 ---
 
-<html lang={SITE.locale}>
+<html lang={site && "locale" in site ? site.locale : SITE.locale}>
 	<head>
 		<!-- View Transitions support -->
 		<ClientRouter />
 
 		<!-- SEO Meta Tags -->
-		<Meta title={title} description={description} heroImage={heroImage}>
+		<Meta title={title} description={description} heroImage={heroImage} site={site} footer={footer}>
 			<slot name="schema" slot="schema" />
 		</Meta>
 
@@ -50,7 +54,7 @@ const { description, title, heroImage, skipLinkText = "Click To Skip To Main Con
 	</head>
 	<body>
 		<!-- Screen reader skip main nav -->
-		<a class="skip" aria-label="skip to main content" href="#main">{skipLinkText}</a>
+		<a class="skip" aria-label={header && "skipLinkAriaLabel" in header ? header.skipLinkAriaLabel : "skip to main content"} href="#main">{header && "skipLinkText" in header ? header.skipLinkText : "Click To Skip To Main Content"}</a>
 
 		<DynamicHeader content={header} />
 		<main id="main">

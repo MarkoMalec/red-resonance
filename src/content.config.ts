@@ -19,33 +19,76 @@ const blogsCollection = defineCollection({
 		}),
 });
 
-const pagesCollection = defineCollection({
-	loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/pages" }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		skipLinkText: z.string(),
-		header: z.object({
+const navItemSchema: z.ZodType<{
+	label: string;
+	url: string;
+	children?: { label: string; url: string }[];
+}> = z.object({
+	label: z.string(),
+	url: z.string(),
+	children: z.array(z.object({ label: z.string(), url: z.string() })).optional().default([]),
+});
+
+const globalCollection = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/global" }),
+	schema: z.union([
+		z.object({
+			siteName: z.string(),
+			tagline: z.string(),
+			defaultDescription: z.string(),
+			siteUrl: z.string(),
+			author: z.string(),
+			locale: z.string(),
+			ogLocale: z.string(),
+			ogImage: z.string(),
+			logo: z.string(),
+			facebook: z.string().optional().default(""),
+			instagram: z.string().optional().default(""),
+		}),
+		z.object({
 			logoAriaLabel: z.string(),
+			skipLinkText: z.string(),
+			skipLinkAriaLabel: z.string(),
 			navAriaLabel: z.string(),
 			menuToggleAriaLabel: z.string(),
+			darkModeToggleAriaLabel: z.string(),
 			mobileContactText: z.string(),
 			contactButtonText: z.string(),
+			contactButtonHref: z.string(),
+			navItems: z.array(navItemSchema),
 		}),
-		footer: z.object({
+		z.object({
 			logoAriaLabel: z.string(),
 			description: z.string(),
 			informationHeading: z.string(),
+			informationLinks: z.array(z.object({ label: z.string(), url: z.string() })),
 			servicesHeading: z.string(),
 			services: z.array(z.string()),
 			contactHeading: z.string(),
+			addressLineOne: z.string(),
+			addressLineTwo: z.string().optional().default(""),
+			addressCity: z.string(),
+			addressState: z.string(),
+			addressZip: z.string(),
+			addressUrl: z.string(),
 			phonePrefix: z.string(),
+			phoneForTel: z.string(),
+			phoneFormatted: z.string(),
+			email: z.string(),
 			emailLabel: z.string(),
 			creditPrefix: z.string(),
 			creditCompany: z.string(),
 			creditCompanyUrl: z.string(),
 			copyrightText: z.string(),
 		}),
+	]),
+});
+
+const pagesCollection = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/pages" }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
 		hero: z.object({
 			eyebrow: z.string(),
 			titleLines: z.array(z.string()),
@@ -119,12 +162,13 @@ const pagesCollection = defineCollection({
 			text: z.string(),
 			buttonText: z.string(),
 			buttonHref: z.string(),
-			imageAlt: z.string(),
+			imageAlt: z.string().optional().default(""),
 		}),
 	}),
 });
 
 export const collections = {
 	blog: blogsCollection,
+	global: globalCollection,
 	pages: pagesCollection,
 };
