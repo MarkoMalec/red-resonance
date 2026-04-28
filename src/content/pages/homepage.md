@@ -1,118 +1,161 @@
 ---
-title: "Pixel Perfect Websites"
-description: "Meta description for the page"
-skipLinkText: "Click To Skip To Main Content"
+title: Pixel Perfect Websites
+description: Meta description for the page
+skipLinkText: Click To Skip To Main Content
 header:
-  logoAriaLabel: "Return to home page"
-  navAriaLabel: "main navigation"
-  menuToggleAriaLabel: "mobile menu toggle"
-  mobileContactText: "Contact"
-  contactButtonText: "Contact Us"
+  logoAriaLabel: Return to home page
+  navAriaLabel: main navigation
+  menuToggleAriaLabel: mobile menu toggle
+  mobileContactText: Contact
+  contactButtonText: Contact Us
 footer:
-  logoAriaLabel: "Return to home page"
-  description: "Extra content if you need it, if not you can delete this whole p tag. I usually do."
-  informationHeading: "Information"
-  servicesHeading: "Services"
-  services:
-    - "Service1"
-    - "Service2"
-    - "Service4"
-    - "Service5"
-  contactHeading: "Contact"
   phonePrefix: "T:"
-  emailLabel: "Click to Email"
-  creditPrefix: "Designed and Hand Coded by"
-  creditCompany: "Your Company Name"
-  creditCompanyUrl: "/"
-  copyrightText: "Copyright"
+  logoAriaLabel: Return to home page
+  contactHeading: Contact
+  creditCompany: Your Company Name
+  servicesHeading: Services
+  creditPrefix: Designed and Hand Coded by
+  creditCompanyUrl: /
+  copyrightText: Copyright
+  informationHeading: Information
+  emailLabel: Click to Email
+  description: Extra content if you need it, if not you can delete this whole p
+    tag. I usually do.
+  services:
+    - Service1
+    - Service2
+    - Service4
+    - Service5
 hero:
-  eyebrow: "Intermediate Kit"
+  eyebrow: Test
   titleLines:
-    - "Intermediate Astro v6"
-    - "Decap CMS"
-  text: "This intermediate kit includes a pre-configured Astro environment, which allows for repeated components, centralized data and greater room to scale as your clients grow. Decap CMS has been integrated to run a blog."
-  primaryButtonText: "Explore More"
-  primaryButtonHref: "/about/"
-  secondaryButtonText: "Get in Touch"
-  secondaryButtonHref: "/contact/"
-  imageAlt: "new home"
+    - Slavski
+    - Pavel
+  text: This intermediate kit includes a pre-configured Astro environment, which
+    allows for repeated components, centralized data and greater room to scale
+    as your clients grow. Decap CMS has been integrated to run a blog.
+  primaryButtonText: Explore More
+  primaryButtonHref: /about/
+  secondaryButtonText: Get in Touch
+  secondaryButtonHref: /contact/
+  imageAlt: new home
 services:
-  - title: "Service 1"
-    text: "Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences."
-  - title: "Service 2"
-    text: "Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences."
-  - title: "Service 3"
-    text: "Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences."
+  - title: Service 1
+    text: Talk about the service with keywords people will be searching for it by.
+      Keep it 1-2 sentences.
+  - title: Service 2
+    text: Talk about the service with keywords people will be searching for it by.
+      Keep it 1-2 sentences.
+  - title: Service 3
+    text: Talk about the service with keywords people will be searching for it by.
+      Keep it 1-2 sentences.
 about:
-  eyebrow: "About Us"
-  title: "About Company Title"
   paragraphs:
-    - "In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per."
-    - "In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per."
-  quote: "In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind."
-  quoteAuthor: "Justin Time"
-  quoteRole: "CEO-Founder"
-  buttonText: "More About Us"
-  buttonHref: "/about/"
-  imageOneAlt: "cabinets"
-  imageTwoAlt: "house"
+    - In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan
+      nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri
+      consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei
+      aptent taciti sociosqu ad litora torquent per.
+    - In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan
+      nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri
+      consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei
+      aptent taciti sociosqu ad litora torquent per.
+  quoteAuthor: Justin Time
+  eyebrow: About Us
+  quoteRole: CEO-Founder
+  imageTwoAlt: house
+  title: About Company Title
+  quote: In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
+    consequat tincidunt turpis sit amet imperdiet for mind.
+  buttonHref: /about/
+  imageOneAlt: cabinets
+  buttonText: More About Us
 feature:
-  eyebrow: "SEO Ranking"
-  title: "Talk about a main service keyword"
+  eyebrow: SEO Ranking
+  title: Talk about a main service keyword
   paragraphs:
-    - "In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per."
-    - "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non tenetur, iure nihil ipsam qui atque commodi id voluptatem nesciunt, quis animi fuga cum doloribus! Eaque laboriosam, unde consectetur iure asperiores ullam. Consequuntur debitis a voluptatibus vitae optio autem explicabo quia neque est quas, in placeat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus modi laudantium voluptatibus rem libero error minus quia eligendi sapiente eos."
-  imageOneAlt: "house"
-  imageTwoAlt: "cabinets"
+    - In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan
+      nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri
+      consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei
+      aptent taciti sociosqu ad litora torquent per.
+    - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non tenetur,
+      iure nihil ipsam qui atque commodi id voluptatem nesciunt, quis animi fuga
+      cum doloribus! Eaque laboriosam, unde consectetur iure asperiores ullam.
+      Consequuntur debitis a voluptatibus vitae optio autem explicabo quia neque
+      est quas, in placeat. Lorem ipsum dolor sit amet consectetur adipisicing
+      elit. Doloribus modi laudantium voluptatibus rem libero error minus quia
+      eligendi sapiente eos.
+  imageOneAlt: house
+  imageTwoAlt: cabinets
 gallery:
-  eyebrow: "Our Portfolio"
-  title: "Et orci volutpat, back up generator installations"
-  buttonText: "View all projects"
-  buttonHref: "/projects/"
+  eyebrow: Our Portfolio
+  title: Et orci volutpat, back up generator installations
+  buttonText: View all projects
+  buttonHref: /projects/
   imageAlts:
-    - "new hallway"
-    - "new home construction"
-    - "building a new wall"
-    - "new kitchen"
-    - "apartment addition"
-    - "new kitchen cabinets"
-    - "new kitchen"
-    - "apartment addition"
-    - "new kitchen cabinets"
+    - new hallway
+    - new home construction
+    - building a new wall
+    - new kitchen
+    - apartment addition
+    - new kitchen cabinets
+    - new kitchen
+    - apartment addition
+    - new kitchen cabinets
 testimonials:
-  eyebrow: "Our Reviews"
-  title: "Words From Our Customers"
-  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare. Lorem ipsum dolor sit amet."
-  buttonText: "Our Reviews"
-  buttonHref: "/reviews/"
-  buttonAriaLabel: "read more reviews"
+  eyebrow: Our Reviews
+  title: Words From Our Customers
+  text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor
+    volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque gravida
+    viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo, ornare.
+    Lorem ipsum dolor sit amet.
+  buttonText: Our Reviews
+  buttonHref: /reviews/
+  buttonAriaLabel: read more reviews
   reviews:
-    - name: "Jon Doe"
-      role: "Homeowner"
-      quote: "Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci imperdiet eget eget."
-      imageAlt: "Jon Doe"
-    - name: "Jane Doe"
-      role: "Homeowner"
-      quote: "Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa urna, volutpat orci imperdiet eget eget."
-      imageAlt: "Jane Doe"
+    - name: Jon Doe
+      role: Homeowner
+      quote: Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse
+        nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper
+        lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa
+        urna, volutpat orci imperdiet eget eget.
+      imageAlt: Jon Doe
+    - name: Jane Doe
+      role: Homeowner
+      quote: Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor habitasse
+        nam sed tempor. Viverra magna pharetra rhoncus, nec sed ullamcorper
+        lectus et. Auctor velit diam fermentum consequat. Feugiat viverra massa
+        urna, volutpat orci imperdiet eget eget.
+      imageAlt: Jane Doe
 faq:
-  eyebrow: "Frequently Asked Questions"
-  title: "In consequat tincidunt turpis sit amet imperdiet."
+  eyebrow: Frequently Asked Questions
+  title: In consequat tincidunt turpis sit amet imperdiet.
   items:
-    - question: "How do I start a kitchen design project with you?"
-      answer: "To begin your kitchen design project, simply reach out to us through our contact form or give us a call. We'll set up an initial consultation to understand your needs, preferences, and budget. From there, we'll guide you through the process, from design concepts to installation."
-    - question: "What payment methods do you accept?"
-      answer: "We accept a variety of payment methods including major credit cards, bank transfers, and financing options. Our team will work with you to find the best payment plan that suits your project."
-    - question: "How can I track the progress of my kitchen design?"
-      answer: "Once your project begins, you'll receive regular updates from your dedicated project manager. You can also track progress through our online portal, where you can view timelines, design approvals, and other key milestones."
-    - question: "What is your return policy for custom cabinetry?"
-      answer: "Due to the custom nature of our cabinetry, returns are handled on a case-by-case basis. We strive for complete customer satisfaction and will work with you to resolve any issues that may arise. Please refer to our full return policy for more details."
+    - question: How do I start a kitchen design project with you?
+      answer: To begin your kitchen design project, simply reach out to us through our
+        contact form or give us a call. We'll set up an initial consultation to
+        understand your needs, preferences, and budget. From there, we'll guide
+        you through the process, from design concepts to installation.
+    - question: What payment methods do you accept?
+      answer: We accept a variety of payment methods including major credit cards,
+        bank transfers, and financing options. Our team will work with you to
+        find the best payment plan that suits your project.
+    - question: How can I track the progress of my kitchen design?
+      answer: Once your project begins, you'll receive regular updates from your
+        dedicated project manager. You can also track progress through our
+        online portal, where you can view timelines, design approvals, and other
+        key milestones.
+    - question: What is your return policy for custom cabinetry?
+      answer: Due to the custom nature of our cabinetry, returns are handled on a
+        case-by-case basis. We strive for complete customer satisfaction and
+        will work with you to resolve any issues that may arise. Please refer to
+        our full return policy for more details.
 cta:
   titleLines:
-    - "Get It Done"
-    - "With Us Today"
-  text: "Say something catchy, informative, and encouraging to click the button to go to the contact page. I like to add these to the bottom of all pages."
-  buttonText: "Get an Estimate Now"
-  buttonHref: "/contact/"
+    - Get It Done
+    - With Us Today
+  text: Say something catchy, informative, and encouraging to click the button to
+    go to the contact page. I like to add these to the bottom of all pages.
+  buttonText: Get an Estimate Now
+  buttonHref: /contact/
   imageAlt: ""
 ---
